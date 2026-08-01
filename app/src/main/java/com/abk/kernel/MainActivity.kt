@@ -612,7 +612,7 @@ private fun AbkMainScaffold(
                     NavigationRail(
                         modifier = Modifier
                             .fillMaxSize()
-                            .blurEffect(),
+                            .then(if (blurActive) Modifier.blurEffect() else Modifier),
                         containerColor = if (blurActive) Color.Transparent else uiSurfaceColor(MaterialTheme.colorScheme.surfaceContainer)
                     ) {
                         visibleTabs.forEach { tab ->
@@ -660,7 +660,7 @@ private fun AbkMainScaffold(
                             translationY = hidden * bottomBarHeightPx
                             alpha = 1f - (hidden * 0.15f)
                         }
-                        .blurEffect(),
+                        .then(if (blurActive) Modifier.blurEffect() else Modifier),
                     containerColor = if (blurActive) Color.Transparent else uiSurfaceColor(MaterialTheme.colorScheme.surfaceContainer),
                     tonalElevation = 0.dp
                 ) {
